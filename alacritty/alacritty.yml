@@ -1,0 +1,5 @@
+cursor:
+  style:
+    shape: underline       # Supported => ▇ Block, _ Underline, | Beam
+    blinking: off          # Supported => Never, off, on, Always
+    vi_mode_style: Beam
