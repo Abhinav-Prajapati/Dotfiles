@@ -1,6 +1,7 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
 # set alt as mod key
 set $mod Mod1 
 
@@ -9,8 +10,7 @@ set $mod Mod1
 font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+# text rendering and scalability on retina/hidpi displays (thanks to pango). #font pango:DejaVu Sans Mono 8
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -35,11 +35,10 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier $mod 
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -176,32 +175,29 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Polybar Start
-
-exec --no-startup-id polybar bar1
-exec always nitrogen --restore
-exec --no-startup-id xrandr --output eDP-1 --primary --auto --output HDMI-1-1 --auto --right-of eDP-1
 default_border pixel 1
 default_floating_border pixel 1
 
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
-
-
-#Polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-#wallpaper
-exec feh --bg-scale /home/abhinav/worksapce/rice/wallpaper/poly-lakeside-wallpaper.jpg
-
-
 #Add gaps around windows 
+gaps top 0
 gaps inner 8
 
-# Set border color for focused (active) windows
-# client.focused            #fc8403 #fc8403 #fc8403 #fc8403
+exec --no-startup-id "picom --experimental-backends --vsync"  
 
-bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/type-1/launcher.sh
-bindsym $mod+x exec --no-startup-id powermenu_t2
+# Monitor config generated form arandr a gui for randr 
+exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-1 --off --output DP-2 --off --output HDMI-1-1 --mode 1920x1080 --pos 0x0 --rotate normal
 
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+  
+# Wallpaper
+exec feh --bg-scale /home/abhinav/worksapce/DotFile/wallpaper/mars.png
+
+# Keybinding for Powermenu
+bindsym $mod+x exec ~/.config/rofi/powermenu/type-1/powermenu.sh
+
+# Keybinding for appaluncher 
+bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher.sh
