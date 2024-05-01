@@ -184,6 +184,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 #Add gaps around windows 
 gaps top 0
 gaps inner 8
+# Rounded corners
+# corner-radius = 12;
 
 exec --no-startup-id "picom --experimental-backends --vsync"  
 
@@ -194,10 +196,13 @@ exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x10
 exec_always --no-startup-id ~/.config/polybar/launch.sh
   
 # Wallpaper
-exec feh --bg-scale /home/abhinav/worksapce/DotFile/wallpaper/mars.png
+exec wal -i worksapce/Dotfile/wallpaper/daniel-leone-v7daTKlZzaw-unsplash.jpg
+
 
 # Keybinding for Powermenu
 bindsym $mod+x exec ~/.config/rofi/powermenu/type-1/powermenu.sh
 
 # Keybinding for appaluncher 
 bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher.sh
+
+
