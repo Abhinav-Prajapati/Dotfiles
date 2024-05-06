@@ -28,7 +28,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
@@ -187,20 +186,20 @@ gaps inner 8
 # Rounded corners
 # corner-radius = 12;
 
-exec --no-startup-id "picom --experimental-backends --vsync"  
+#exec --no-startup-id "picom --experimental-backends --vsync"  
 
 # Monitor config generated form arandr a gui for randr 
-exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-1 --off --output DP-2 --off --output HDMI-1-1 --mode 1920x1080 --pos 0x0 --rotate normal
+exec --no-startup-id xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x1080 --rotate normal --output DP-1 --off --output DP-2 --off --output HDMI-1-0 --mode 1920x1080 --pos 0x0 --rotate normal
 
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-  
 # Wallpaper
-exec wal -i worksapce/Dotfile/wallpaper/daniel-leone-v7daTKlZzaw-unsplash.jpg
+exec_always  wal -i worksapce/Dotfile/wallpaper/Component\ 1.png > /dev/null 
+#exec_always wal -i ~/Downloads/Untitled.jpg
 
 
 # Keybinding for Powermenu
-bindsym $mod+x exec ~/.config/rofi/powermenu/type-1/powermenu.sh
+bindsym $mod+x exec ~/.config/rofi/powermenu/type-1/powermenu.sh 
 
 # Keybinding for appaluncher 
 bindsym $mod+space exec --no-startup-id ~/.config/rofi/launchers/type-2/launcher.sh
